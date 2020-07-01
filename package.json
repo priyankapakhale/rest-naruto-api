@@ -1,0 +1,24 @@
+{
+  "name": "rest-naruto-api",
+  "version": "1.0.0",
+  "description": "API for Naruto and Naruto Shippuden",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Priyanka Pakhale",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^7.4.3",
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.13",
+    "mongoose": "^5.9.20",
+    "node-uuid": "^1.4.8",
+    "nodemon": "^2.0.4",
+    "swagger-ui-express": "^2.0.13",
+    "sync-request": "^4.0.2"
+  }
+}
