@@ -1,0 +1,57 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "rest-naruto-api",
+    "version": "1.0",
+    "contact": {
+      "name": "Priyanka Pakhale"
+    },
+    "description": "Get information about all characters, chakra natures, kekkei genkai, teams, villages, tools and justu from the famous anime series \"Naruto\" & \"Naruto Shippuden\""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/api/chakra_natures": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [
+          "chakra_natures"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-api-chakranatures",
+        "description": "Get information about all chakra natures"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "tags": [
+    {
+      "name": "chakra_natures"
+    }
+  ]
+}
