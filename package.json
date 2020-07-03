@@ -4,7 +4,8 @@
   "description": "API for Naruto and Naruto Shippuden",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server",
+    "build": "nodemon server"
   },
   "author": "Priyanka Pakhale",
   "license": "ISC",
