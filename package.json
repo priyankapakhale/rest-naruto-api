@@ -2,7 +2,7 @@
   "name": "rest-naruto-api",
   "version": "1.0.0",
   "description": "API for Naruto and Naruto Shippuden",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server",
     "build": "node build"
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^7.4.3",
     "moment": "^2.17.1",
