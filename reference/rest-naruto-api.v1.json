@@ -16,39 +16,129 @@
   "paths": {
     "/api/chakra_natures": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Retrieve all Chakra Natures",
+        "description": "Returns a list of all available chakra natures, including their names, associated images, and creation/update timestamps.",
+        "operationId": "getChakraNatures",
         "tags": [
-          "chakra_natures"
+          "Chakra Natures"
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "A successful response with a list of chakra natures.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "image": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChakraNature"
                   }
+                },
+                "example": [
+                  {
+                    "_id": "60c72b2f9b1e8e001c8e9f2a",
+                    "name": "Wind Release",
+                    "image": "https://example.com/images/wind-release.png",
+                    "createdAt": "2023-01-15T10:30:00.000Z",
+                    "updatedAt": "2023-01-15T10:30:00.000Z",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "60c72b2f9b1e8e001c8e9f2b",
+                    "name": "Fire Release",
+                    "image": "https://example.com/images/fire-release.png",
+                    "createdAt": "2023-01-15T10:31:00.000Z",
+                    "updatedAt": "2023-01-15T10:31:00.000Z",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "60c72b2f9b1e8e001c8e9f2c",
+                    "name": "Lightning Release",
+                    "image": "https://example.com/images/lightning-release.png",
+                    "createdAt": "2023-01-15T10:32:00.000Z",
+                    "updatedAt": "2023-01-15T10:32:00.000Z",
+                    "__v": 0
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or error retrieving chakra natures.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
           }
-        },
-        "operationId": "get-api-chakranatures",
-        "description": "Get information about all chakra natures"
-      },
-      "parameters": []
+        }
+      }
     }
   },
   "components": {
-    "schemas": {}
-  },
+    "schemas": {
+      "ChakraNature": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Unique identifier for the chakra nature.",
+            "example": "60c72b2f9b1e8e001c8e9f2a"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the chakra nature.",
+            "example": "Wind Release"
+          },
+          "image": {
+            "type": "string",
+            "format": "url",
+            "description": "URL to an image representing the chakra nature.",
+            "example": "https://example.com/images/wind-release.png"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the chakra nature was created.",
+            "example": "2023-01-15T10:30:00.000Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the chakra nature was last updated.",
+            "example": "2023-01-15T10:30:00.000Z"
+          },
+          "__v": {
+            "type": "integer",
+            "description": "Version key, used by Mongoose internally.",
+            "example": 0
+          }
+        },
+        "required": [
+          "_id",
+          "name",
+          "image",
+          "createdAt",
+          "updatedAt",
+          "__v"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A descriptive error message.",
+            "example": "Error fetching chakra natures: Network issues."
+          }
+        },
+        "required": [
+          "message"
+        ]
+      }
+    }
+  }
   "tags": [
     {
       "name": "chakra_natures"
