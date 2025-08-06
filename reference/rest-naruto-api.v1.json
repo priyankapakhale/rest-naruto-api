@@ -79,6 +79,9 @@
       "get": {
         "summary": "Get all characters",
         "description": "Retrieves a list of all character entries stored in the database.",
+        "tags": [
+          "Characters"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -654,6 +657,9 @@
   "tags": [
     {
       "name": "chakra_natures"
+    },
+    {
+      "name": "characters"
     }
   ]
 }
