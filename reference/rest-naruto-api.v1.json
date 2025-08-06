@@ -1,665 +1,665 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "rest-naruto-api",
-    "version": "1.0",
-    "contact": {
-      "name": "Priyanka Pakhale"
-    },
-    "description": "Get information about all characters, chakra natures, kekkei genkai, teams, villages, tools and justu from the famous anime series \"Naruto\" & \"Naruto Shippuden\""
-  },
-  "servers": [
-    {
-      "url": "http://localhost:5000"
-    }
-  ],
-  "paths": {
-    "/api/chakra_natures": {
-      "get": {
-        "summary": "Retrieve all Chakra Natures",
-        "description": "Returns a list of all available chakra natures, including their names, associated images, and creation/update timestamps.",
-        "operationId": "getChakraNatures",
-        "tags": [
-          "Chakra Natures"
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response with a list of chakra natures.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ChakraNature"
-                  }
-                },
-                "example": [
-                  {
-                    "_id": "60c72b2f9b1e8e001c8e9f2a",
-                    "name": "Wind Release",
-                    "image": "https://example.com/images/wind-release.png",
-                    "createdAt": "2023-01-15T10:30:00.000Z",
-                    "updatedAt": "2023-01-15T10:30:00.000Z",
-                    "__v": 0
-                  },
-                  {
-                    "_id": "60c72b2f9b1e8e001c8e9f2b",
-                    "name": "Fire Release",
-                    "image": "https://example.com/images/fire-release.png",
-                    "createdAt": "2023-01-15T10:31:00.000Z",
-                    "updatedAt": "2023-01-15T10:31:00.000Z",
-                    "__v": 0
-                  },
-                  {
-                    "_id": "60c72b2f9b1e8e001c8e9f2c",
-                    "name": "Lightning Release",
-                    "image": "https://example.com/images/lightning-release.png",
-                    "createdAt": "2023-01-15T10:32:00.000Z",
-                    "updatedAt": "2023-01-15T10:32:00.000Z",
-                    "__v": 0
-                  }
-                ]
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request or error retrieving chakra natures.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/characters": {
-      "get": {
-        "summary": "Get all characters",
-        "description": "Retrieves a list of all character entries stored in the database.",
-        "tags": [
-          "Characters"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "A successful response containing a list of characters.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Character"
-                  }
-                },
-                "examples": {
-                  "ListOfCharacters": {
-                    "summary": "Example list of characters",
-                    "value": [
-                      {
-                        "_id": "65e69e38f1a1d0b5e8c1b2c3",
-                        "name": {
-                          "english": "Naruto Uzumaki",
-                          "kanji": "うずまきナルト",
-                          "romaji": "Uzumaki Naruto"
-                        },
-                        "image": "https://example.com/images/naruto_uzumaki.png",
-                        "other_names": [
-                          "Hero of the Hidden Leaf",
-                          "Seventh Hokage"
-                        ],
-                        "voice_actors": {
-                          "japanese": [
-                            "Junko Takeuchi"
-                          ],
-                          "english": [
-                            "Maile Flanagan"
-                          ]
-                        },
-                        "personal": {
-                          "birthdate": "1994-10-10",
-                          "sex": "Male",
-                          "age": {
-                            "Part I": 12,
-                            "Part II": 16
-                          },
-                          "status": "Alive",
-                          "height": {
-                            "Part I": "145.3 cm",
-                            "Part II": "166 cm"
-                          },
-                          "weight": {
-                            "Part I": "40.1 kg",
-                            "Part II": "50.9 kg"
-                          },
-                          "blood_type": "B",
-                          "kekkei_genkai": [
-                            "Senjutsu (Sage Mode)"
-                          ],
-                          "classifications": [
-                            "Jinchūriki",
-                            "Sage",
-                            "Sensor Type"
-                          ],
-                          "occupations": [
-                            "Hokage",
-                            "Genin"
-                          ],
-                          "affiliations": [
-                            "Konohagakure",
-                            "Team Kakashi",
-                            "Allied Shinobi Forces"
-                          ],
-                          "teams": [
-                            "Team 7"
-                          ],
-                          "partners": [
-                            "Sasuke Uchiha",
-                            "Sakura Haruno"
-                          ],
-                          "clan": [
-                            "Uzumaki Clan"
-                          ]
-                        },
-                        "rank": {
-                          "ninja_rank": "Genin",
-                          "ninja_registration": "012607",
-                          "academy_graduation_age": 12,
-                          "chunin_promotion_age": null
-                        },
-                        "family": {
-                          "father": "Minato Namikaze",
-                          "mother": "Kushina Uzumaki",
-                          "son": "Boruto Uzumaki",
-                          "daughter": "Himawari Uzumaki",
-                          "wife": "Hinata Hyuga"
-                        },
-                        "nature_types": [
-                          "Wind Release",
-                          "Earth Release",
-                          "Water Release",
-                          "Fire Release",
-                          "Lightning Release"
-                        ],
-                        "jutsu": [
-                          "Rasengan",
-                          "Shadow Clone Jutsu",
-                          "Sage Mode"
-                        ],
-                        "tools": [
-                          "Shuriken",
-                          "Kunai"
-                        ],
-                        "createdAt": "2024-03-04T10:00:00.000Z",
-                        "updatedAt": "2024-03-04T10:30:00.000Z",
-                        "__v": 0
-                      },
-                      {
-                        "_id": "65e69e38f1a1d0b5e8c1b2c4",
-                        "name": {
-                          "english": "Sasuke Uchiha",
-                          "kanji": "うちはサスケ",
-                          "romaji": "Uchiha Sasuke"
-                        },
-                        "image": "https://example.com/images/sasuke_uchiha.png",
-                        "other_names": [
-                          "The Last Uchiha",
-                          "Support Kage"
-                        ],
-                        "voice_actors": {
-                          "japanese": [
-                            "Noriaki Sugiyama"
-                          ],
-                          "english": [
-                            "Yuri Lowenthal"
-                          ]
-                        },
-                        "personal": {
-                          "birthdate": "1994-07-23",
-                          "sex": "Male",
-                          "age": {
-                            "Part I": 12,
-                            "Part II": 16
-                          },
-                          "status": "Alive",
-                          "height": {
-                            "Part I": "150.8 cm",
-                            "Part II": "168 cm"
-                          },
-                          "weight": {
-                            "Part I": "42.2 kg",
-                            "Part II": "52.2 kg"
-                          },
-                          "blood_type": "AB",
-                          "kekkei_genkai": [
-                            "Sharingan",
-                            "Mangekyō Sharingan",
-                            "Rinnegan"
-                          ],
-                          "classifications": [
-                            "Missing-nin"
-                          ],
-                          "occupations": [
-                            "Wanderer"
-                          ],
-                          "affiliations": [
-                            "Konohagakure",
-                            "Team Kakashi"
-                          ],
-                          "teams": [
-                            "Team 7",
-                            "Team Taka"
-                          ],
-                          "partners": [
-                            "Naruto Uzumaki",
-                            "Sakura Haruno"
-                          ],
-                          "clan": [
-                            "Uchiha Clan"
-                          ]
-                        },
-                        "rank": {
-                          "ninja_rank": "Genin",
-                          "ninja_registration": "012606",
-                          "academy_graduation_age": 12,
-                          "chunin_promotion_age": null
-                        },
-                        "family": {
-                          "father": "Fugaku Uchiha",
-                          "mother": "Mikoto Uchiha",
-                          "brother": "Itachi Uchiha",
-                          "daughter": "Sarada Uchiha",
-                          "wife": "Sakura Haruno"
-                        },
-                        "nature_types": [
-                          "Fire Release",
-                          "Lightning Release",
-                          "Wind Release"
-                        ],
-                        "jutsu": [
-                          "Chidori",
-                          "Amaterasu",
-                          "Susanoo"
-                        ],
-                        "tools": [
-                          "Kunai",
-                          "Katana"
-                        ],
-                        "createdAt": "2024-03-04T10:01:00.000Z",
-                        "updatedAt": "2024-03-04T10:31:00.000Z",
-                        "__v": 0
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request or error retrieving characters.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "message": "Error fetching characters: Database connection failed."
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "ChakraNature": {
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "description": "Unique identifier for the chakra nature.",
-            "example": "60c72b2f9b1e8e001c8e9f2a"
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the chakra nature.",
-            "example": "Wind Release"
-          },
-          "image": {
-            "type": "string",
-            "format": "url",
-            "description": "URL to an image representing the chakra nature.",
-            "example": "https://example.com/images/wind-release.png"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date and time the chakra nature was created.",
-            "example": "2023-01-15T10:30:00.000Z"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date and time the chakra nature was last updated.",
-            "example": "2023-01-15T10:30:00.000Z"
-          },
-          "__v": {
-            "type": "integer",
-            "description": "Version key, used by Mongoose internally.",
-            "example": 0
-          }
-        },
-        "required": [
-          "_id",
-          "name",
-          "image",
-          "createdAt",
-          "updatedAt",
-          "__v"
-        ]
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A descriptive error message.",
-            "example": "Error fetching chakra natures: Network issues."
-          }
-        },
-        "required": [
-          "message"
-        ]
-      }
-    },
-    "Character": {
-        "type": "object",
-        "description": "Represents a character with various personal, combat, and background details.",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "description": "The unique identifier for the character.",
-            "example": "65e69e38f1a1d0b5e8c1b2c3"
-          },
-          "name": {
-            "type": "object",
-            "description": "Different linguistic representations of the character's name.",
-            "properties": {
-              "english": {
-                "type": "string",
-                "example": "Naruto Uzumaki"
-              },
-              "kanji": {
-                "type": "string",
-                "example": "うずまきナルト"
-              },
-              "romaji": {
-                "type": "string",
-                "example": "Uzumaki Naruto"
-              }
-            }
-          },
-          "image": {
-            "type": "string",
-            "format": "uri",
-            "description": "URL to the character's primary image.",
-            "example": "https://example.com/images/naruto_uzumaki.png"
-          },
-          "other_names": {
-            "type": "array",
-            "description": "A list of other names or aliases the character is known by.",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "Hero of the Hidden Leaf",
-              "Seventh Hokage"
-            ]
-          },
-          "voice_actors": {
-            "type": "object",
-            "description": "Voice actors for the character in different languages.",
-            "properties": {
-              "japanese": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Junko Takeuchi"
-                ]
-              },
-              "english": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Maile Flanagan"
-                ]
-              }
-            }
-          },
-          "personal": {
-            "type": "object",
-            "description": "Personal details and background information.",
-            "properties": {
-              "birthdate": {
-                "type": "string",
-                "format": "date",
-                "description": "The character's birthdate (YYYY-MM-DD).",
-                "example": "1994-10-10"
-              },
-              "sex": {
-                "type": "string",
-                "example": "Male"
-              },
-              "age": {
-                "type": "object",
-                "description": "Flexible object for age details, e.g., per saga.",
-                "example": {
-                  "Part I": 12,
-                  "Part II": 16
-                }
-              },
-              "status": {
-                "type": "string",
-                "example": "Alive"
-              },
-              "height": {
-                "type": "object",
-                "description": "Flexible object for height details, e.g., per saga.",
-                "example": {
-                  "Part I": "145.3 cm",
-                  "Part II": "166 cm"
-                }
-              },
-              "weight": {
-                "type": "object",
-                "description": "Flexible object for weight details, e.g., per saga.",
-                "example": {
-                  "Part I": "40.1 kg",
-                  "Part II": "50.9 kg"
-                }
-              },
-              "blood_type": {
-                "type": "string",
-                "example": "B"
-              },
-              "kekkei_genkai": {
-                "type": "array",
-                "description": "A list of unique abilities or bloodline limits.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Senjutsu (Sage Mode)"
-                ]
-              },
-              "classifications": {
-                "type": "array",
-                "description": "A list of classifications or roles.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Jinchūriki",
-                  "Sage"
-                ]
-              },
-              "occupations": {
-                "type": "array",
-                "description": "A list of occupations or roles.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Hokage"
-                ]
-              },
-              "affiliations": {
-                "type": "array",
-                "description": "A list of organizations or groups the character is affiliated with.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Konohagakure",
-                  "Team Kakashi"
-                ]
-              },
-              "teams": {
-                "type": "array",
-                "description": "A list of teams the character has been a part of.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Team 7"
-                ]
-              },
-              "partners": {
-                "type": "array",
-                "description": "A list of prominent partners.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Sasuke Uchiha",
-                  "Sakura Haruno"
-                ]
-              },
-              "clan": {
-                "type": "array",
-                "description": "A list of clans the character belongs to.",
-                "items": {
-                  "type": "string"
-                },
-                "example": [
-                  "Uzumaki Clan"
-                ]
-              }
-            }
-          },
-          "rank": {
-            "type": "object",
-            "description": "Information about the character's ninja rank progression.",
-            "properties": {
-              "ninja_rank": {
-                "type": "string",
-                "example": "Genin"
-              },
-              "ninja_registration": {
-                "type": "string",
-                "example": "012607"
-              },
-              "academy_graduation_age": {
-                "type": "number",
-                "example": 12
-              },
-              "chunin_promotion_age": {
-                "type": "number",
-                "nullable": true,
-                "example": null
-              }
-            }
-          },
-          "family": {
-            "type": "object",
-            "description": "Flexible object for family members and relationships.",
-            "example": {
-              "father": "Minato Namikaze",
-              "mother": "Kushina Uzumaki"
-            }
-          },
-          "nature_types": {
-            "type": "array",
-            "description": "A list of chakra nature types the character can use.",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "Wind Release",
-              "Earth Release"
-            ]
-          },
-          "jutsu": {
-            "type": "array",
-            "description": "A list of jutsu (techniques) the character can perform.",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "Rasengan",
-              "Shadow Clone Jutsu"
-            ]
-          },
-          "tools": {
-            "type": "array",
-            "description": "A list of tools or weapons the character typically uses.",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "Shuriken",
-              "Kunai"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the character entry was created.",
-            "example": "2024-03-04T10:00:00.000Z"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the character entry was last updated.",
-            "example": "2024-03-04T10:30:00.000Z"
-          },
-          "__v": {
-            "type": "integer",
-            "description": "Version key for the document, used by Mongoose.",
-            "example": 0
-          }
-        }
-    }
-  },
-  "tags": [
-    {
-      "name": "chakra_natures"
-    },
-    {
-      "name": "characters"
-    }
-  ]
+	"openapi": "3.0.0",
+	"info": {
+		"title": "rest-naruto-api",
+		"version": "1.0",
+		"contact": {
+			"name": "Priyanka Pakhale"
+		},
+		"description": "Get information about all characters, chakra natures, kekkei genkai, teams, villages, tools and justu from the famous anime series \"Naruto\" & \"Naruto Shippuden\""
+	},
+	"servers": [
+		{
+			"url": "http://localhost:5000"
+		}
+	],
+	"paths": {
+		"/api/chakra_natures": {
+			"get": {
+				"summary": "Retrieve all Chakra Natures",
+				"description": "Returns a list of all available chakra natures, including their names, associated images, and creation/update timestamps.",
+				"operationId": "getChakraNatures",
+				"tags": [
+					"Chakra Natures"
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response with a list of chakra natures.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/ChakraNature"
+									}
+								},
+								"example": [
+									{
+										"_id": "60c72b2f9b1e8e001c8e9f2a",
+										"name": "Wind Release",
+										"image": "https://example.com/images/wind-release.png",
+										"createdAt": "2023-01-15T10:30:00.000Z",
+										"updatedAt": "2023-01-15T10:30:00.000Z",
+										"__v": 0
+									},
+									{
+										"_id": "60c72b2f9b1e8e001c8e9f2b",
+										"name": "Fire Release",
+										"image": "https://example.com/images/fire-release.png",
+										"createdAt": "2023-01-15T10:31:00.000Z",
+										"updatedAt": "2023-01-15T10:31:00.000Z",
+										"__v": 0
+									},
+									{
+										"_id": "60c72b2f9b1e8e001c8e9f2c",
+										"name": "Lightning Release",
+										"image": "https://example.com/images/lightning-release.png",
+										"createdAt": "2023-01-15T10:32:00.000Z",
+										"updatedAt": "2023-01-15T10:32:00.000Z",
+										"__v": 0
+									}
+								]
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request or error retrieving chakra natures.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/characters": {
+			"get": {
+				"summary": "Get all characters",
+				"description": "Retrieves a list of all character entries stored in the database.",
+				"tags": [
+					"Characters"
+				],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "A successful response containing a list of characters.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Character"
+									}
+								},
+								"examples": {
+									"ListOfCharacters": {
+										"summary": "Example list of characters",
+										"value": [
+											{
+												"_id": "65e69e38f1a1d0b5e8c1b2c3",
+												"name": {
+													"english": "Naruto Uzumaki",
+													"kanji": "うずまきナルト",
+													"romaji": "Uzumaki Naruto"
+												},
+												"image": "https://example.com/images/naruto_uzumaki.png",
+												"other_names": [
+													"Hero of the Hidden Leaf",
+													"Seventh Hokage"
+												],
+												"voice_actors": {
+													"japanese": [
+														"Junko Takeuchi"
+													],
+													"english": [
+														"Maile Flanagan"
+													]
+												},
+												"personal": {
+													"birthdate": "1994-10-10",
+													"sex": "Male",
+													"age": {
+														"Part I": 12,
+														"Part II": 16
+													},
+													"status": "Alive",
+													"height": {
+														"Part I": "145.3 cm",
+														"Part II": "166 cm"
+													},
+													"weight": {
+														"Part I": "40.1 kg",
+														"Part II": "50.9 kg"
+													},
+													"blood_type": "B",
+													"kekkei_genkai": [
+														"Senjutsu (Sage Mode)"
+													],
+													"classifications": [
+														"Jinchūriki",
+														"Sage",
+														"Sensor Type"
+													],
+													"occupations": [
+														"Hokage",
+														"Genin"
+													],
+													"affiliations": [
+														"Konohagakure",
+														"Team Kakashi",
+														"Allied Shinobi Forces"
+													],
+													"teams": [
+														"Team 7"
+													],
+													"partners": [
+														"Sasuke Uchiha",
+														"Sakura Haruno"
+													],
+													"clan": [
+														"Uzumaki Clan"
+													]
+												},
+												"rank": {
+													"ninja_rank": "Genin",
+													"ninja_registration": "012607",
+													"academy_graduation_age": 12,
+													"chunin_promotion_age": null
+												},
+												"family": {
+													"father": "Minato Namikaze",
+													"mother": "Kushina Uzumaki",
+													"son": "Boruto Uzumaki",
+													"daughter": "Himawari Uzumaki",
+													"wife": "Hinata Hyuga"
+												},
+												"nature_types": [
+													"Wind Release",
+													"Earth Release",
+													"Water Release",
+													"Fire Release",
+													"Lightning Release"
+												],
+												"jutsu": [
+													"Rasengan",
+													"Shadow Clone Jutsu",
+													"Sage Mode"
+												],
+												"tools": [
+													"Shuriken",
+													"Kunai"
+												],
+												"createdAt": "2024-03-04T10:00:00.000Z",
+												"updatedAt": "2024-03-04T10:30:00.000Z",
+												"__v": 0
+											},
+											{
+												"_id": "65e69e38f1a1d0b5e8c1b2c4",
+												"name": {
+													"english": "Sasuke Uchiha",
+													"kanji": "うちはサスケ",
+													"romaji": "Uchiha Sasuke"
+												},
+												"image": "https://example.com/images/sasuke_uchiha.png",
+												"other_names": [
+													"The Last Uchiha",
+													"Support Kage"
+												],
+												"voice_actors": {
+													"japanese": [
+														"Noriaki Sugiyama"
+													],
+													"english": [
+														"Yuri Lowenthal"
+													]
+												},
+												"personal": {
+													"birthdate": "1994-07-23",
+													"sex": "Male",
+													"age": {
+														"Part I": 12,
+														"Part II": 16
+													},
+													"status": "Alive",
+													"height": {
+														"Part I": "150.8 cm",
+														"Part II": "168 cm"
+													},
+													"weight": {
+														"Part I": "42.2 kg",
+														"Part II": "52.2 kg"
+													},
+													"blood_type": "AB",
+													"kekkei_genkai": [
+														"Sharingan",
+														"Mangekyō Sharingan",
+														"Rinnegan"
+													],
+													"classifications": [
+														"Missing-nin"
+													],
+													"occupations": [
+														"Wanderer"
+													],
+													"affiliations": [
+														"Konohagakure",
+														"Team Kakashi"
+													],
+													"teams": [
+														"Team 7",
+														"Team Taka"
+													],
+													"partners": [
+														"Naruto Uzumaki",
+														"Sakura Haruno"
+													],
+													"clan": [
+														"Uchiha Clan"
+													]
+												},
+												"rank": {
+													"ninja_rank": "Genin",
+													"ninja_registration": "012606",
+													"academy_graduation_age": 12,
+													"chunin_promotion_age": null
+												},
+												"family": {
+													"father": "Fugaku Uchiha",
+													"mother": "Mikoto Uchiha",
+													"brother": "Itachi Uchiha",
+													"daughter": "Sarada Uchiha",
+													"wife": "Sakura Haruno"
+												},
+												"nature_types": [
+													"Fire Release",
+													"Lightning Release",
+													"Wind Release"
+												],
+												"jutsu": [
+													"Chidori",
+													"Amaterasu",
+													"Susanoo"
+												],
+												"tools": [
+													"Kunai",
+													"Katana"
+												],
+												"createdAt": "2024-03-04T10:01:00.000Z",
+												"updatedAt": "2024-03-04T10:31:00.000Z",
+												"__v": 0
+											}
+										]
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request or error retrieving characters.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									}
+								},
+								"example": {
+									"message": "Error fetching characters: Database connection failed."
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"ChakraNature": {
+				"type": "object",
+				"properties": {
+					"_id": {
+						"type": "string",
+						"description": "Unique identifier for the chakra nature.",
+						"example": "60c72b2f9b1e8e001c8e9f2a"
+					},
+					"name": {
+						"type": "string",
+						"description": "The name of the chakra nature.",
+						"example": "Wind Release"
+					},
+					"image": {
+						"type": "string",
+						"format": "url",
+						"description": "URL to an image representing the chakra nature.",
+						"example": "https://example.com/images/wind-release.png"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The date and time the chakra nature was created.",
+						"example": "2023-01-15T10:30:00.000Z"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "The date and time the chakra nature was last updated.",
+						"example": "2023-01-15T10:30:00.000Z"
+					},
+					"__v": {
+						"type": "integer",
+						"description": "Version key, used by Mongoose internally.",
+						"example": 0
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"image",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				]
+			},
+			"ErrorResponse": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string",
+						"description": "A descriptive error message.",
+						"example": "Error fetching chakra natures: Network issues."
+					}
+				},
+				"required": [
+					"message"
+				]
+			},
+			"Character": {
+				"type": "object",
+				"description": "Represents a character with various personal, combat, and background details.",
+				"properties": {
+					"_id": {
+						"type": "string",
+						"description": "The unique identifier for the character.",
+						"example": "65e69e38f1a1d0b5e8c1b2c3"
+					},
+					"name": {
+						"type": "object",
+						"description": "Different linguistic representations of the character's name.",
+						"properties": {
+							"english": {
+								"type": "string",
+								"example": "Naruto Uzumaki"
+							},
+							"kanji": {
+								"type": "string",
+								"example": "うずまきナルト"
+							},
+							"romaji": {
+								"type": "string",
+								"example": "Uzumaki Naruto"
+							}
+						}
+					},
+					"image": {
+						"type": "string",
+						"format": "uri",
+						"description": "URL to the character's primary image.",
+						"example": "https://example.com/images/naruto_uzumaki.png"
+					},
+					"other_names": {
+						"type": "array",
+						"description": "A list of other names or aliases the character is known by.",
+						"items": {
+							"type": "string"
+						},
+						"example": [
+							"Hero of the Hidden Leaf",
+							"Seventh Hokage"
+						]
+					},
+					"voice_actors": {
+						"type": "object",
+						"description": "Voice actors for the character in different languages.",
+						"properties": {
+							"japanese": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Junko Takeuchi"
+								]
+							},
+							"english": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Maile Flanagan"
+								]
+							}
+						}
+					},
+					"personal": {
+						"type": "object",
+						"description": "Personal details and background information.",
+						"properties": {
+							"birthdate": {
+								"type": "string",
+								"format": "date",
+								"description": "The character's birthdate (YYYY-MM-DD).",
+								"example": "1994-10-10"
+							},
+							"sex": {
+								"type": "string",
+								"example": "Male"
+							},
+							"age": {
+								"type": "object",
+								"description": "Flexible object for age details, e.g., per saga.",
+								"example": {
+									"Part I": 12,
+									"Part II": 16
+								}
+							},
+							"status": {
+								"type": "string",
+								"example": "Alive"
+							},
+							"height": {
+								"type": "object",
+								"description": "Flexible object for height details, e.g., per saga.",
+								"example": {
+									"Part I": "145.3 cm",
+									"Part II": "166 cm"
+								}
+							},
+							"weight": {
+								"type": "object",
+								"description": "Flexible object for weight details, e.g., per saga.",
+								"example": {
+									"Part I": "40.1 kg",
+									"Part II": "50.9 kg"
+								}
+							},
+							"blood_type": {
+								"type": "string",
+								"example": "B"
+							},
+							"kekkei_genkai": {
+								"type": "array",
+								"description": "A list of unique abilities or bloodline limits.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Senjutsu (Sage Mode)"
+								]
+							},
+							"classifications": {
+								"type": "array",
+								"description": "A list of classifications or roles.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Jinchūriki",
+									"Sage"
+								]
+							},
+							"occupations": {
+								"type": "array",
+								"description": "A list of occupations or roles.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Hokage"
+								]
+							},
+							"affiliations": {
+								"type": "array",
+								"description": "A list of organizations or groups the character is affiliated with.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Konohagakure",
+									"Team Kakashi"
+								]
+							},
+							"teams": {
+								"type": "array",
+								"description": "A list of teams the character has been a part of.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Team 7"
+								]
+							},
+							"partners": {
+								"type": "array",
+								"description": "A list of prominent partners.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Sasuke Uchiha",
+									"Sakura Haruno"
+								]
+							},
+							"clan": {
+								"type": "array",
+								"description": "A list of clans the character belongs to.",
+								"items": {
+									"type": "string"
+								},
+								"example": [
+									"Uzumaki Clan"
+								]
+							}
+						}
+					},
+					"rank": {
+						"type": "object",
+						"description": "Information about the character's ninja rank progression.",
+						"properties": {
+							"ninja_rank": {
+								"type": "string",
+								"example": "Genin"
+							},
+							"ninja_registration": {
+								"type": "string",
+								"example": "012607"
+							},
+							"academy_graduation_age": {
+								"type": "number",
+								"example": 12
+							},
+							"chunin_promotion_age": {
+								"type": "number",
+								"nullable": true,
+								"example": null
+							}
+						}
+					},
+					"family": {
+						"type": "object",
+						"description": "Flexible object for family members and relationships.",
+						"example": {
+							"father": "Minato Namikaze",
+							"mother": "Kushina Uzumaki"
+						}
+					},
+					"nature_types": {
+						"type": "array",
+						"description": "A list of chakra nature types the character can use.",
+						"items": {
+							"type": "string"
+						},
+						"example": [
+							"Wind Release",
+							"Earth Release"
+						]
+					},
+					"jutsu": {
+						"type": "array",
+						"description": "A list of jutsu (techniques) the character can perform.",
+						"items": {
+							"type": "string"
+						},
+						"example": [
+							"Rasengan",
+							"Shadow Clone Jutsu"
+						]
+					},
+					"tools": {
+						"type": "array",
+						"description": "A list of tools or weapons the character typically uses.",
+						"items": {
+							"type": "string"
+						},
+						"example": [
+							"Shuriken",
+							"Kunai"
+						]
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "Timestamp when the character entry was created.",
+						"example": "2024-03-04T10:00:00.000Z"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "Timestamp when the character entry was last updated.",
+						"example": "2024-03-04T10:30:00.000Z"
+					},
+					"__v": {
+						"type": "integer",
+						"description": "Version key for the document, used by Mongoose.",
+						"example": 0
+					}
+				}
+			}
+		}
+	},
+	"tags": [
+		{
+			"name": "chakra_natures"
+		},
+		{
+			"name": "characters"
+		}
+	]
 }
